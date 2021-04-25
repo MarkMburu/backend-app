@@ -4,6 +4,8 @@ exports.up = function(knex) {
         table.text("projectname");
         table.integer('numberofplots');
         table.string("projectDetails",2000);
+        table.binary("image");
+        table.string("contentType")
         table.timestamps(false, true);
     })
   };

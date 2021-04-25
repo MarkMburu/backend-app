@@ -24,6 +24,13 @@ router.get("/", checkValidToken,(req, res) => {
         .catch(err => res.json(err))
 });
 
+router.get("/profile",checkValidToken,(req,res)=>{
+     queries.getById(req.userId).then(users =>{
+         res.json(users[0]);
+     } )
+     .catch(err => res.json(err))
+});
+
 router.get("/:id",checkValidToken, (req, res) => {
     queries.getById(req.params.id).then(users => {
         res.json(users[0])
