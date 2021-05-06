@@ -4,6 +4,7 @@ const express = require('express');
 const router = express.Router();
 const queries = require("../db/userQueries");
 const { checkValidToken } = require("../Middlewares/auth_token_validation");
+const {sendMessage} = require("../Middlewares/send_messages");
 
 const isValid = (req, res, next) => {
     if (!isNaN(req.params.id)) return next()
@@ -44,6 +45,8 @@ router.post("/register", (req, res) => {
     body.password = hashSync(body.password, salt);
     // body.confirmPassword = hashSync(body.confirmPassword, salt);
     queries.create(body).then(user => {
+        let message = `Hi ${body.firstname}, Welcome to Anchor Premier Land Solutions.`;
+        sendMessage(body.phone,message);
         res.status(201).json(user);
 
     })
