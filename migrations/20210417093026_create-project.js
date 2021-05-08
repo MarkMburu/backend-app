@@ -9,8 +9,8 @@ exports.up = async db => {
     table.string('longitude', 120).notNullable();
     table.boolean('active').notNull().defaultTo(false);
     table.integer('numberofplots');
-    table.binary("image").notNullable;
-    table.string("contentType").notNullable;
+    table.binary("image");
+    table.string("contentType");
     table.timestamps(false, true);
   })
 };

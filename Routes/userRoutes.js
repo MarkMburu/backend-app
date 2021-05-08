@@ -45,9 +45,9 @@ router.post("/register", (req, res) => {
     body.password = hashSync(body.password, salt);
     // body.confirmPassword = hashSync(body.confirmPassword, salt);
     queries.create(body).then(user => {
-        let message = `Hi ${body.firstname}, Welcome to Anchor Premier Land Solutions.`;
-        sendMessage(body.phone,message);
         res.status(201).json(user);
+        let message = `Hi ${user[0].display_name}, Welcome to Anchor Premier Land Solutions.`;
+        sendMessage(user[0].phone,message);
 
     })
         .catch(err => res.json(err))

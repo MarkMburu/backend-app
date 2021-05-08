@@ -6,7 +6,7 @@ router.get("/",(req,res)=>{
     queries.getAllPlots().then(plots =>{
         res.status(200).json(plots);
     })
-    .catch(err => req.json(err));
+    .catch(err => console.log(err));
 });
 
 router.post("/",(req,res)=>{

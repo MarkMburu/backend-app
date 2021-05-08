@@ -2,21 +2,21 @@ const knex = require("./knex");
 
 module.exports ={
     getProjects(){
-        return knex("project");
+        return knex("projects");
     },
     create(project){
-        return knex("project").insert(project,"*");
+        return knex("projects").insert(project,"*");
     },
     getProjectById(id){
-        return knex("project").where({"id": id});
+        return knex("projects").where({"id": id});
     },
     updateProject(id,data){
-        return knex("project")
+        return knex("projects")
         .where({ "id": id })
         .update(data,"*");
     },
     deleteProject(id){
-        return knex("project")
+        return knex("projects")
         .where({"id": id})
         .del();
     }
